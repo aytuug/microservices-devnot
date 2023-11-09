@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 public class DepartmentController {
 
     private final DepartmentService departmentService;
+    @Value("${department-service.message}")
+    private String message;
     @PostMapping
     public ResponseEntity<DepartmentDto> saveDepartment(@RequestBody DepartmentRequest departmentRequest) {
         return ResponseEntity.ok(departmentService.saveDepartment(departmentRequest));
@@ -26,6 +28,6 @@ public class DepartmentController {
 
     @GetMapping("/message")
     public ResponseEntity<String> getDepartmentMessage(){
-        return ResponseEntity.ok(departmentService.getMessage());
+        return ResponseEntity.ok("This message: " + message);
     }
 }

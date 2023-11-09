@@ -18,9 +18,6 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    @Value("${spring.boot.message}")
-    private String message;
-
     //private final RestTemplate restTemplate;
     //private final WebClient webClient;
     private final APIClient apiClient;
@@ -56,7 +53,4 @@ public class EmployeeService {
                 .build();
     }
 
-    public String message() {
-        return message;
-    }
 }
