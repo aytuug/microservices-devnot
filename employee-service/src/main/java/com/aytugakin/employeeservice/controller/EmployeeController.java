@@ -24,4 +24,9 @@ public class EmployeeController {
     public ResponseEntity<APIResponseDto> getEmployeeById(@PathVariable("id") Long id){
         return ResponseEntity.ok(employeeService.getEmployeeById(id));
     }
+
+    @GetMapping("/message")
+    public ResponseEntity<String> getEmployeeMessage(){
+        return ResponseEntity.ok(employeeService.message());
+    }
 }

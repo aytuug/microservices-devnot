@@ -6,7 +6,9 @@ import com.aytugakin.employeeservice.dto.DepartmentDto;
 import com.aytugakin.employeeservice.dto.EmployeeDto;
 import com.aytugakin.employeeservice.entity.Employee;
 import com.aytugakin.employeeservice.repository.EmployeeRepository;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ import org.springframework.stereotype.Service;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+
+    @Value("${spring.boot.message}")
+    private String message;
+
     //private final RestTemplate restTemplate;
     //private final WebClient webClient;
     private final APIClient apiClient;
@@ -48,5 +54,9 @@ public class EmployeeService {
                 .employeeDto(EmployeeDto.convert(employee))
                 .departmentDto(departmentDto)
                 .build();
+    }
+
+    public String message() {
+        return message;
     }
 }

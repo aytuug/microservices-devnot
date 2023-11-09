@@ -25,7 +25,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/message")
-    public ResponseEntity<String> getDepartment(){
+    public ResponseEntity<String> getDepartmentMessage(){
         return ResponseEntity.ok(departmentService.getMessage());
     }
 }
