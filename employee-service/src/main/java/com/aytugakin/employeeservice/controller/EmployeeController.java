@@ -5,6 +5,7 @@ import com.aytugakin.employeeservice.dto.APIResponseDto;
 import com.aytugakin.employeeservice.dto.EmployeeDto;
 import com.aytugakin.employeeservice.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,8 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    @Value("${employee-service.message}")
+    private String message;
     @PostMapping
     public ResponseEntity<EmployeeDto> saveDepartment(@RequestBody EmployeeRequest employeeRequest) {
         return ResponseEntity.ok(employeeService.saveDepartment(employeeRequest));
@@ -26,7 +29,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/message")
-    public ResponseEntity<String> getEmployeeMessage(){
-        return ResponseEntity.ok(employeeService.message());
+    public ResponseEntity<String> getDepartmentMessage(){
+        return ResponseEntity.ok("This message: " + message);
     }
 }
